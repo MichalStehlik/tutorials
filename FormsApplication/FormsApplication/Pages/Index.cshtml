@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-page="./AddBook">Přidej knihu</a>
+    <table class="table">
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Autor</td>
+                @if (item.IsRead == true)
+                {
+                    <td>Přečteno</td>
+                }
+                @if(item.IsRead == false)
+                {
+                    <td>Nepřečteno</td>
+                }
+            </tr>
+        }
+    </table>
+</div>

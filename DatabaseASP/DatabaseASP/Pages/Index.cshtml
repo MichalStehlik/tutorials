@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<a style="margin: auto;" asp-page="AddMovie" class="btn btn-primary">Přidej film</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Name of the movie</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Release</th>
+            <th scope="col">Odebrat film</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.release)
+                </td>
+                <td>
+                    <a class="btn-danger btn-lg" asp-page-handler="Remove" asp-route-id="@item.Id">Odebrat</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
